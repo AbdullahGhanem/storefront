@@ -1,6 +1,9 @@
 import app from '../../server';
 import supertest from 'supertest'
-
+import { UserStore } from '../user';
+import { OrderStore } from '../order';
+import jwt from 'jsonwebtoken';
+import Client from '../../database';
 
 const request = supertest(app);
 
@@ -51,7 +54,6 @@ describe('GET /users', function () {
 });
 
 // Authentication Test For Users
-
 describe('GET /users', function () {
     it('responds with json', function (done) {
         supertest(app)
@@ -76,8 +78,17 @@ describe('POST /users', function () {
             });
     });
 
-    // Orders Test
+    describe('GET /users/:id', function () {
+        it('responds with json', function (done) {
+            supertest(app)
+                .get('/users/1')
+                .auth('username', 'password_digest')
+                .set('Accept', 'application/json')
+                .expect(401, done);
+        });
+    });
 
+    // Orders Test
     describe('POST /orders', function () {
         it('responds with json', function (done) {
             supertest(app)
@@ -96,6 +107,15 @@ describe('POST /users', function () {
         });
     });
 
+    describe('GET /orders/:id', function () {
+        it('responds with json', function (done) {
+            supertest(app)
+                .get('/orders/1')
+                .auth('username', 'password_digest')
+                .set('Accept', 'application/json')
+                .expect(401, done);
+        });
+    });
 });
 
 

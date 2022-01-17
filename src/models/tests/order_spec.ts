@@ -12,8 +12,8 @@ const userstore = new UserStore();
 describe('Order Model', () => {
     beforeAll(async () => {
         await userstore.create({
-            username: 'henok1',
-            password: 'password123'
+            username: 'abdullahghanem',
+            password: '123456789'
         });
 
         await productstore.create({
@@ -56,11 +56,9 @@ describe('Order Model', () => {
 
     it('index method should return a list of orders', async () => {
         const result = await orderstore.index();
-        expect(result).toEqual([{
-            id: 1,
-            status: 'active',
-            user_id: '1'
-        }]);
+        expect(result).toEqual([
+            { id: 1, status: 'active', user_id: '1' }
+        ]);
     });
 
     it('should show the correct order', async () => {

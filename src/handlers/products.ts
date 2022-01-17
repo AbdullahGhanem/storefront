@@ -15,9 +15,9 @@ const index = async (_req: Request, res: Response) => {
     }
 }
 
-const show = async (req: Request, res: Response) => {
+const show = async (_req: Request, res: Response) => {
     try {
-        const product = await store.show(req.body.id);
+        const product = await store.show(_req.params.id)
         res.json(product)
     } catch (err) {
         res.status(400);
@@ -33,7 +33,6 @@ const create = async (_req: Request, res: Response) => {
         };
         const newProduct = await store.create(product);
         res.json(newProduct)
-        console.log(newProduct)
     } catch (err) {
         res.status(400);
         res.json(err);

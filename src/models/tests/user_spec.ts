@@ -24,15 +24,15 @@ describe("User Model", () => {
 
     it('create method should add a user', async () => {
         const user = await store.create({
-            username: 'henok1',
-            password: 'password123'
+            username: 'abdullahghanem',
+            password: '123456789'
 
         });
-        expect(user.username).toMatch('henok1');
+        expect(user.username).toMatch('abdullahghanem');
     });
 
     it('authenticate the user', async () => {
-        const authenticateUser = await store.authenticate('henok1', 'password123');
+        const authenticateUser = await store.authenticate('abdullahghanem', '123456789');
         expect(authenticateUser).toBeTruthy
     });
 
@@ -40,7 +40,7 @@ describe("User Model", () => {
         const result = await store.index();
         expect(result).toContain(jasmine.objectContaining({
             id: 1,
-            username: 'henok1'
+            username: 'abdullahghanem'
         }));
     });
 
@@ -49,7 +49,7 @@ describe("User Model", () => {
         const result = await store.show('1');
         expect(result).toEqual(jasmine.objectContaining({
             id: 1,
-            username: 'henok1'
+            username: 'abdullahghanem'
         }));
 
     });

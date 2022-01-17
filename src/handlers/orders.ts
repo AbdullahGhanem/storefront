@@ -14,11 +14,10 @@ const index = async (_req: Request, res: Response) => {
         res.json(err);
     }
 }
-}
 
 const show = async (_req: Request, res: Response) => {
     try {
-        const orders = await store.show(_req.body.id)
+        const orders = await store.show(_req.params.id)
         res.json(orders)
     } catch (err) {
         res.status(400);
