@@ -24,6 +24,21 @@ db-migrate up
 - Grant storefront & storefront_test to postgres
 
 ## ENVIRONMENT VARIABLES:
+
+```
+POSTGRES_HOST=127.0.0.1
+POSTGRES_DB=storefront
+POSTGRES_TEST_DB=storefront_test
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=
+BCRYPT_PASSWORD=dfbvhgdf37398edd
+SALT_ROUNDS=10
+TOKEN_SECRET=abdullahghanem
+ENV=dev
+```
+
+or
+
 ```
 copy .env.example .env
 ```
