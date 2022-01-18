@@ -5,8 +5,8 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 ## API Endpoints
 #### Products
-- Index: Get Products (app.get('/products', index) (http://localhost:3000/products)
-- Show- (app.get('/products/:id', show)(http://localhost:3000/products/1)
+- Index: Get Products (app.get('/products', index) (http://127.0.0.1:3000/products)
+- Show- (app.get('/products/:id', show)(http://127.0.0.1:3000/products/1)
 - Create [token required] - app.post('/products', verifyAuthToken, create);
 - Delete [ token required] - DELETE products/
 

@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express'
 import bodyParser from 'body-parser'
-import product_routes from './handlers/products'
+import productRoutes from './handlers/products'
 import userRoutes from './handlers/user'
 import orderRoutes from './handlers/orders'
 
@@ -19,7 +19,7 @@ app.get('/', function (_req: Request, res: Response) {
 })
 
 
-product_routes(app);
+productRoutes(app);
 userRoutes(app);
 orderRoutes(app);
 

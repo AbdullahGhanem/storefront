@@ -46,8 +46,14 @@ const authenticate = async (req: Request, res: Response) => {
     }
     try {
         const u = await store.authenticate(user.username, user.password)
-        var token = jwt.sign({ user: u }, token_secret);
-        res.json(token)
+        if (u) {
+            if (token_secret) {
+                let token = jwt.sign({ user: u }, token_secret);
+                res.json(token);
+            }
+        } else {
+            res.send('Username or password incorrect');
+        }
     } catch (error) {
         res.status(401)
         res.json({ error })
@@ -66,7 +72,7 @@ const userRoutes = (app: express.Application) => {
     app.get('/users', verifyAuthToken, index)
     app.get('/users/:id', verifyAuthToken, show)
     app.post('/users', create)
-    app.post('/users/authenticate/:id', authenticate)
+    app.post('/users/login', authenticate)
     app.delete('/users', verifyAuthToken, destroy);
 }
 
